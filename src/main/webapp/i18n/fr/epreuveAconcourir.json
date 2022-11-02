@@ -1,0 +1,26 @@
+{
+  "concoursFonctionPubliqueApp": {
+    "epreuveAconcourir": {
+      "home": {
+        "title": "EpreuveAconcourirs",
+        "createLabel": "Créer un nouveau Epreuve Aconcourir",
+        "createOrEditLabel": "Créer ou éditer un Epreuve Aconcourir",
+        "notFound": "Aucun Epreuve Aconcourir trouvé"
+      },
+      "created": "Un nouveau Epreuve Aconcourir a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Epreuve Aconcourir avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Epreuve Aconcourir avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Epreuve Aconcourir {{ id }} ?"
+      },
+      "detail": {
+        "title": "Epreuve Aconcourir"
+      },
+      "nom": "Nom",
+      "duree": "Duree",
+      "coefficiant": "Coefficiant",
+      "noteEleminatoire": "Note Eleminatoire",
+      "offre": "Offre"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="offre">
+            <h2><span jhiTranslate="concoursFonctionPubliqueApp.offre.detail.title">Offre</span> {{ offre.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.code">Code</span></dt>
+                <dd>
+                    <span>{{ offre.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.nomPoste">Nom Poste</span></dt>
+                <dd>
+                    <span>{{ offre.nomPoste }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.descrip">Descrip</span></dt>
+                <dd>
+                    <span>{{ offre.descrip }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.dateOuverture">Date Ouverture</span></dt>
+                <dd>
+                    <span>{{ offre.dateOuverture }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.dateCloture">Date Cloture</span></dt>
+                <dd>
+                    <span>{{ offre.dateCloture }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.isArchive">Is Archive</span></dt>
+                <dd>
+                    <span>{{ offre.isArchive }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.dateConcours">Date Concours</span></dt>
+                <dd>
+                    <span>{{ offre.dateConcours }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.ageLimite">Age Limite</span></dt>
+                <dd>
+                    <span>{{ offre.ageLimite }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.ministerConcerner">Minister Concerner</span></dt>
+                <dd>
+                    <div *ngIf="offre.ministerConcerner">
+                        <a [routerLink]="['/minister-concerner', offre.ministerConcerner?.id, 'view']">{{ offre.ministerConcerner?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.categrie">Categrie</span></dt>
+                <dd>
+                    <div *ngIf="offre.categrie">
+                        <a [routerLink]="['/categorie', offre.categrie?.id, 'view']">{{ offre.categrie?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offre.option">Option</span></dt>
+                <dd>
+                    <div *ngIf="offre.option">
+                        <a [routerLink]="['/option', offre.option?.id, 'view']">{{ offre.option?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/offre', offre.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

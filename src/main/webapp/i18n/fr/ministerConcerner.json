@@ -1,0 +1,24 @@
+{
+  "concoursFonctionPubliqueApp": {
+    "ministerConcerner": {
+      "home": {
+        "title": "MinisterConcerners",
+        "createLabel": "Créer un nouveau Minister Concerner",
+        "createOrEditLabel": "Créer ou éditer un Minister Concerner",
+        "notFound": "Aucun Minister Concerner trouvé"
+      },
+      "created": "Un nouveau Minister Concerner a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Minister Concerner avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Minister Concerner avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Minister Concerner {{ id }} ?"
+      },
+      "detail": {
+        "title": "Minister Concerner"
+      },
+      "nom": "Nom",
+      "domaine": "Domaine",
+      "description": "Description"
+    }
+  }
+}

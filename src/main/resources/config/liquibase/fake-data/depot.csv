@@ -1,0 +1,11 @@
+id;date_depot;is_archive;is_acepte
+1;2022-11-01T10:01:38;false;false
+2;2022-10-31T16:08:27;false;true
+3;2022-10-31T16:16:44;false;false
+4;2022-10-31T17:17:37;true;false
+5;2022-11-01T05:40:17;true;true
+6;2022-11-01T08:57:31;false;true
+7;2022-10-31T21:41:47;false;true
+8;2022-11-01T01:33:57;false;true
+9;2022-11-01T01:07:43;false;true
+10;2022-10-31T13:33:00;true;true

@@ -1,0 +1,71 @@
+{
+  "name": "Offre",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomPoste",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descrip",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateOuverture",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateCloture",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "isArchive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateConcours",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "ageLimite",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ministerConcerner",
+      "otherEntityRelationshipName": "offre",
+      "relationshipName": "ministerConcerner",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "categorie",
+      "otherEntityRelationshipName": "offre",
+      "relationshipName": "categrie",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "option",
+      "otherEntityRelationshipName": "offre",
+      "relationshipName": "option",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20221101125352",
+  "entityTableName": "offre",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

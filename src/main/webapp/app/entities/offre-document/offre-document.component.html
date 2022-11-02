@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.home.title">Offre Documents</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-offre-document" [routerLink]="['/offre-document/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="concoursFonctionPubliqueApp.offreDocument.home.createLabel">
+            Create a new Offre Document
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="offreDocuments?.length === 0">
+        <span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.home.notFound">No offreDocuments found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="offreDocuments && offreDocuments.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.offre">Offre</span></th>
+                    <th scope="col" ><span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.documentAFournir">Document A Fournir</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let offreDocument of offreDocuments ;trackBy: trackId">
+                    <td><a [routerLink]="['/offre-document', offreDocument.id, 'view']">{{ offreDocument.id }}</a></td>
+                    <td>
+                        <div *ngIf="offreDocument.offre">
+                            <a [routerLink]="['/offre', offreDocument.offre?.id, 'view']" >{{ offreDocument.offre?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="offreDocument.documentAFournir">
+                            <a [routerLink]="['/document-a-fournir', offreDocument.documentAFournir?.id, 'view']" >{{ offreDocument.documentAFournir?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/offre-document', offreDocument.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/offre-document', offreDocument.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(offreDocument)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

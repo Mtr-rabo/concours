@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="offreDocument">
+            <h2><span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.detail.title">Offre Document</span> {{ offreDocument.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.offre">Offre</span></dt>
+                <dd>
+                    <div *ngIf="offreDocument.offre">
+                        <a [routerLink]="['/offre', offreDocument.offre?.id, 'view']">{{ offreDocument.offre?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.documentAFournir">Document A Fournir</span></dt>
+                <dd>
+                    <div *ngIf="offreDocument.documentAFournir">
+                        <a [routerLink]="['/document-a-fournir', offreDocument.documentAFournir?.id, 'view']">{{ offreDocument.documentAFournir?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/offre-document', offreDocument.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+{
+  "name": "Fichier",
+  "fields": [
+    {
+      "fieldName": "nomFichier",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fich",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "depot",
+      "otherEntityRelationshipName": "fichier",
+      "relationshipName": "depot",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20221101125052",
+  "javadoc": "not an ignored comment",
+  "entityTableName": "fichier",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

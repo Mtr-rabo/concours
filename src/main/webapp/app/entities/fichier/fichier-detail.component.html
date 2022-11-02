@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fichier">
+            <h2><span jhiTranslate="concoursFonctionPubliqueApp.fichier.detail.title">Fichier</span> {{ fichier.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.fichier.nomFichier">Nom Fichier</span></dt>
+                <dd>
+                    <span>{{ fichier.nomFichier }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.fichier.fich">Fich</span></dt>
+                <dd>
+                    <div *ngIf="fichier.fich">
+                        <a (click)="openFile(fichier.fichContentType, fichier.fich)" jhiTranslate="entity.action.open">open</a>
+                        {{ fichier.fichContentType }}, {{ byteSize(fichier.fich) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.fichier.depot">Depot</span></dt>
+                <dd>
+                    <div *ngIf="fichier.depot">
+                        <a [routerLink]="['/depot', fichier.depot?.id, 'view']">{{ fichier.depot?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fichier', fichier.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

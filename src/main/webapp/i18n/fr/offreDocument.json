@@ -1,0 +1,23 @@
+{
+  "concoursFonctionPubliqueApp": {
+    "offreDocument": {
+      "home": {
+        "title": "OffreDocuments",
+        "createLabel": "Créer un nouveau Offre Document",
+        "createOrEditLabel": "Créer ou éditer un Offre Document",
+        "notFound": "Aucun Offre Document trouvé"
+      },
+      "created": "Un nouveau Offre Document a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Offre Document avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Offre Document avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Offre Document {{ id }} ?"
+      },
+      "detail": {
+        "title": "Offre Document"
+      },
+      "offre": "Offre",
+      "documentAFournir": "Document A Fournir"
+    }
+  }
+}

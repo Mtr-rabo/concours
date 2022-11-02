@@ -1,0 +1,93 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="concoursFonctionPubliqueApp.offre.home.title">Offres</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-offre" [routerLink]="['/offre/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="concoursFonctionPubliqueApp.offre.home.createLabel">
+            Create a new Offre
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="offres?.length === 0">
+        <span jhiTranslate="concoursFonctionPubliqueApp.offre.home.notFound">No offres found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="offres && offres.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="code"><span jhiTranslate="concoursFonctionPubliqueApp.offre.code">Code</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nomPoste"><span jhiTranslate="concoursFonctionPubliqueApp.offre.nomPoste">Nom Poste</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="descrip"><span jhiTranslate="concoursFonctionPubliqueApp.offre.descrip">Descrip</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateOuverture"><span jhiTranslate="concoursFonctionPubliqueApp.offre.dateOuverture">Date Ouverture</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateCloture"><span jhiTranslate="concoursFonctionPubliqueApp.offre.dateCloture">Date Cloture</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isArchive"><span jhiTranslate="concoursFonctionPubliqueApp.offre.isArchive">Is Archive</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateConcours"><span jhiTranslate="concoursFonctionPubliqueApp.offre.dateConcours">Date Concours</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ageLimite"><span jhiTranslate="concoursFonctionPubliqueApp.offre.ageLimite">Age Limite</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="ministerConcerner.id"><span jhiTranslate="concoursFonctionPubliqueApp.offre.ministerConcerner">Minister Concerner</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="categrie.id"><span jhiTranslate="concoursFonctionPubliqueApp.offre.categrie">Categrie</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="option.id"><span jhiTranslate="concoursFonctionPubliqueApp.offre.option">Option</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let offre of offres ;trackBy: trackId">
+                    <td><a [routerLink]="['/offre', offre.id, 'view']">{{ offre.id }}</a></td>
+                    <td>{{ offre.code }}</td>
+                    <td>{{ offre.nomPoste }}</td>
+                    <td>{{ offre.descrip }}</td>
+                    <td>{{ offre.dateOuverture | date:'medium' }}</td>
+                    <td>{{ offre.dateCloture | date:'medium' }}</td>
+                    <td>{{ offre.isArchive }}</td>
+                    <td>{{ offre.dateConcours | date:'medium' }}</td>
+                    <td>{{ offre.ageLimite }}</td>
+                    <td>
+                        <div *ngIf="offre.ministerConcerner">
+                            <a [routerLink]="['/minister-concerner', offre.ministerConcerner?.id, 'view']" >{{ offre.ministerConcerner?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="offre.categrie">
+                            <a [routerLink]="['/categorie', offre.categrie?.id, 'view']" >{{ offre.categrie?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="offre.option">
+                            <a [routerLink]="['/option', offre.option?.id, 'view']" >{{ offre.option?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/offre', offre.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/offre', offre.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(offre)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

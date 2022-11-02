@@ -1,0 +1,22 @@
+
+<div class="card bg-color-card">
+    <div class="card-header">
+      <div class="row">
+        <span class="col-md-3 font-weight-bold">Fonction :  {{offre.nomPoste}}</span>
+        <span class="col-md-3 font-weight-bold">Ministère : {{offre.ministerConcerner?.nom}}</span>
+        <span class="col-md-3 font-weight-bold">Option :  {{offre.option?.libelle}}</span>
+        <span class="col-md-3 font-weight-bold">Categorie : {{offre.categrie?.libelle}}</span>
+    </div>
+    </div>
+    <div class="card-body">
+        <h2 class="font-weight-bold mt-3">Code de fonction :  <span > {{offre.code}}</span></h2>
+      <h5 class="card-title mt-3">Description</h5>
+      <p class="card-text mt-3">{{offre.descrip}}</p>
+      <h4 class="font-weight-bold mt-3"> Age Limite : <span > {{offre.ageLimite}} </span></h4>
+      <p class="card-text row mt-3">
+        <span class="col-md-6 font-weight-bold text-center">Date d'ouverture : <u class="text-success">{{offre.dateOuverture | date}}</u> </span>
+        <span class="col-md-6 font-weight-bold text-center">Date de clôture :<u class="text-danger">{{offre.dateCloture | date}}</u> </span>
+    </p>
+      <a href="#" class="btn btn-primary mt-3">Go somewhere</a>
+    </div>
+  </div>

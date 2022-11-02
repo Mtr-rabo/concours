@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="epreuveAconcourir">
+            <h2><span jhiTranslate="concoursFonctionPubliqueApp.epreuveAconcourir.detail.title">Epreuve Aconcourir</span> {{ epreuveAconcourir.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.epreuveAconcourir.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ epreuveAconcourir.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.epreuveAconcourir.duree">Duree</span></dt>
+                <dd>
+                    <span>{{ epreuveAconcourir.duree }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.epreuveAconcourir.coefficiant">Coefficiant</span></dt>
+                <dd>
+                    <span>{{ epreuveAconcourir.coefficiant }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.epreuveAconcourir.noteEleminatoire">Note Eleminatoire</span></dt>
+                <dd>
+                    <span>{{ epreuveAconcourir.noteEleminatoire }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.epreuveAconcourir.offre">Offre</span></dt>
+                <dd>
+                    <div *ngIf="epreuveAconcourir.offre">
+                        <a [routerLink]="['/offre', epreuveAconcourir.offre?.id, 'view']">{{ epreuveAconcourir.offre?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/epreuve-aconcourir', epreuveAconcourir.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

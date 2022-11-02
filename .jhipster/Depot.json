@@ -1,0 +1,44 @@
+{
+  "name": "Depot",
+  "fields": [
+    {
+      "fieldName": "dateDepot",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "isArchive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isAcepte",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "offre",
+      "otherEntityRelationshipName": "depot",
+      "relationshipName": "offre",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "candidat",
+      "otherEntityRelationshipName": "depot",
+      "relationshipName": "candidat",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20221101125752",
+  "entityTableName": "depot",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

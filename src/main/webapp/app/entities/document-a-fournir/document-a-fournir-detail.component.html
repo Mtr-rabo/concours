@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="documentAFournir">
+            <h2><span jhiTranslate="concoursFonctionPubliqueApp.documentAFournir.detail.title">Document A Fournir</span> {{ documentAFournir.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.documentAFournir.code">Code</span></dt>
+                <dd>
+                    <span>{{ documentAFournir.code }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.documentAFournir.libelle">Libelle</span></dt>
+                <dd>
+                    <span>{{ documentAFournir.libelle }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/document-a-fournir', documentAFournir.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

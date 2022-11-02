@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Offre.
+    -->
+    <changeSet id="20221101125352-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="minister_concerner_id"
+                                 baseTableName="offre"
+                                 constraintName="fk_offre_minister_concerner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="minister_concerner"/>
+
+        <addForeignKeyConstraint baseColumnNames="categrie_id"
+                                 baseTableName="offre"
+                                 constraintName="fk_offre_categrie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="categorie"/>
+
+        <addForeignKeyConstraint baseColumnNames="option_id"
+                                 baseTableName="offre"
+                                 constraintName="fk_offre_option_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="option"/>
+
+    </changeSet>
+</databaseChangeLog>

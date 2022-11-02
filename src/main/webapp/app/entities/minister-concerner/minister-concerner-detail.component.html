@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ministerConcerner">
+            <h2><span jhiTranslate="concoursFonctionPubliqueApp.ministerConcerner.detail.title">Minister Concerner</span> {{ ministerConcerner.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.ministerConcerner.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ ministerConcerner.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.ministerConcerner.domaine">Domaine</span></dt>
+                <dd>
+                    <span>{{ ministerConcerner.domaine }}</span>
+                </dd>
+                <dt><span jhiTranslate="concoursFonctionPubliqueApp.ministerConcerner.description">Description</span></dt>
+                <dd>
+                    <span>{{ ministerConcerner.description }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/minister-concerner', ministerConcerner.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

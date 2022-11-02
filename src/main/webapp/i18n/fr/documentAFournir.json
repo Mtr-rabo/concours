@@ -1,0 +1,23 @@
+{
+  "concoursFonctionPubliqueApp": {
+    "documentAFournir": {
+      "home": {
+        "title": "DocumentAFournirs",
+        "createLabel": "Créer un nouveau Document A Fournir",
+        "createOrEditLabel": "Créer ou éditer un Document A Fournir",
+        "notFound": "Aucun Document A Fournir trouvé"
+      },
+      "created": "Un nouveau Document A Fournir a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Document A Fournir avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Document A Fournir avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Document A Fournir {{ id }} ?"
+      },
+      "detail": {
+        "title": "Document A Fournir"
+      },
+      "code": "Code",
+      "libelle": "Libelle"
+    }
+  }
+}
