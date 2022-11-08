@@ -21,7 +21,7 @@
             <column name="nom_poste" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="descrip" type="varchar(255)">
+            <column name="descrip" type="varchar(10000)">
                 <constraints nullable="true" />
             </column>
             <column name="date_ouverture" type="datetime">

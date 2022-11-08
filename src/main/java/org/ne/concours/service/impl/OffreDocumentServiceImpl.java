@@ -40,6 +40,13 @@ public class OffreDocumentServiceImpl implements OffreDocumentService {
         return offreDocumentRepository.findAll();
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<OffreDocument> findByOffre(Long id) {
+        log.debug("Request to get all OffreDocuments");
+        return offreDocumentRepository.findByOffreId(id);
+    }
+
 
     @Override
     @Transactional(readOnly = true)

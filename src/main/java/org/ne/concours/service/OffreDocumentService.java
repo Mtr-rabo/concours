@@ -24,6 +24,7 @@ public interface OffreDocumentService {
      * @return the list of entities.
      */
     List<OffreDocument> findAll();
+    List<OffreDocument> findByOffre(Long id);
 
 
     /**

@@ -3,86 +3,79 @@
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-offre-heading" jhiTranslate="concoursFonctionPubliqueApp.offre.home.createOrEditLabel">Create or edit a Offre</h2>
 
-            <div>
+            <div class="row">
                 <jhi-alert-error></jhi-alert-error>
 
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                <div class="form-group col-md-6"[hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.code" for="field_code">Code</label>
                     <input type="text" class="form-control" name="code" id="field_code"
                            formControlName="code"/>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.nomPoste" for="field_nomPoste">Nom Poste</label>
                     <input type="text" class="form-control" name="nomPoste" id="field_nomPoste"
                            formControlName="nomPoste"/>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.descrip" for="field_descrip">Descrip</label>
                     <input type="text" class="form-control" name="descrip" id="field_descrip"
                            formControlName="descrip"/>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.dateOuverture" for="field_dateOuverture">Date Ouverture</label>
                     <div class="d-flex">
                         <input id="field_dateOuverture" type="datetime-local" class="form-control" name="dateOuverture" formControlName="dateOuverture" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.dateCloture" for="field_dateCloture">Date Cloture</label>
                     <div class="d-flex">
                         <input id="field_dateCloture" type="datetime-local" class="form-control" name="dateCloture" formControlName="dateCloture" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.isArchive" for="field_isArchive">Is Archive</label>
-                    <input type="checkbox" class="form-control" name="isArchive" id="field_isArchive"
-                           formControlName="isArchive"/>
-                </div>
-
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.dateConcours" for="field_dateConcours">Date Concours</label>
                     <div class="d-flex">
                         <input id="field_dateConcours" type="datetime-local" class="form-control" name="dateConcours" formControlName="dateConcours" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.ageLimite" for="field_ageLimite">Age Limite</label>
                     <input type="number" class="form-control" name="ageLimite" id="field_ageLimite"
                            formControlName="ageLimite"/>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.ministerConcerner" for="field_ministerConcerner">Minister Concerner</label>
                     <select class="form-control" id="field_ministerConcerner" name="ministerConcerner" formControlName="ministerConcerner">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="ministerConcernerOption.id === editForm.get('ministerConcerner')!.value?.id ? editForm.get('ministerConcerner')!.value : ministerConcernerOption" *ngFor="let ministerConcernerOption of ministerconcerners; trackBy: trackById">{{ ministerConcernerOption.id }}</option>
+                        <option [ngValue]="ministerConcernerOption.id === editForm.get('ministerConcerner')!.value?.id ? editForm.get('ministerConcerner')!.value : ministerConcernerOption" *ngFor="let ministerConcernerOption of ministerconcerners; trackBy: trackById">{{ ministerConcernerOption.nom }}</option>
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.categrie" for="field_categrie">Categrie</label>
                     <select class="form-control" id="field_categrie" name="categrie" formControlName="categrie">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="categorieOption.id === editForm.get('categrie')!.value?.id ? editForm.get('categrie')!.value : categorieOption" *ngFor="let categorieOption of categories; trackBy: trackById">{{ categorieOption.id }}</option>
+                        <option [ngValue]="categorieOption.id === editForm.get('categrie')!.value?.id ? editForm.get('categrie')!.value : categorieOption" *ngFor="let categorieOption of categories; trackBy: trackById">{{ categorieOption.libelle }}</option>
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label class="form-control-label" jhiTranslate="concoursFonctionPubliqueApp.offre.option" for="field_option">Option</label>
                     <select class="form-control" id="field_option" name="option" formControlName="option">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="optionOption.id === editForm.get('option')!.value?.id ? editForm.get('option')!.value : optionOption" *ngFor="let optionOption of options; trackBy: trackById">{{ optionOption.id }}</option>
+                        <option [ngValue]="optionOption.id === editForm.get('option')!.value?.id ? editForm.get('option')!.value : optionOption" *ngFor="let optionOption of options; trackBy: trackById">{{ optionOption.code }}</option>
                     </select>
                 </div>
             </div>

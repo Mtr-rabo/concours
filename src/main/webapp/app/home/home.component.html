@@ -43,8 +43,8 @@
     </div>
 </div>
  -->
- <div class="row">
-    <div class="col-sm-3">
+ <div class="row font-italic">
+    <div class="col-sm-3 ">
         <h4 class="text-center"><strong>
             REPUBLIQUE DU NIGER
         </strong>
@@ -67,19 +67,28 @@
     <div class="col-sm-6" *ngFor="let item of offres">
       <div class="card bg-color-card  m-4">
         <div class="card-body">
+            <h2 class="mt-3"> <span class="font-weight-bold"> Nom de fonction : </span> <span > <u>{{item.nomPoste}}</u> </span></h2>
           <h5 class="card-title row">
-            <span class="col-md-6 font-weight-bold">Fonction :  {{item.nomPoste}}</span>
-            <span class="col-md-6 font-weight-bold">Ministère : {{item.ministerConcerner?.nom}}</span>
+            <div class="col-md-6 "> <span class="font-weight-bold">Fonction : </span>{{item.nomPoste}}</div>
+            <div class="col-md-6 "> <span class="font-weight-bold">Ministère : </span>{{item.ministerConcerner?.nom}}</div>
+
+
         </h5>
-          <p class="card-text font-weight-bold"><strong>Option :</strong>{{item.option?.libelle}}</p>
-          <p class="card-text font-weight-bold"><strong> Description</strong>  :{{item.descrip}}</p>
-          <p class="card-text font-weight-bold"><strong> Categorie</strong>  :{{item.categrie?.libelle}}</p>
-          <p class="card-text row">
-            <span class="col-md-6 font-weight-bold">Date d'ouverture : <u class="text-success">{{item.dateOuverture | date}}</u> </span>
-            <span class="col-md-6 font-weight-bold">Date de clôture :<u class="text-danger">{{item.dateCloture | date}}</u> </span>
+          <strong class="card-text font-weight-bold mt-3 mb-3">Option :</strong><strong class="mt-3 mb-3">{{item.option?.libelle}}</strong>
+          <br><br>
+          <strong class="card-text font-weight-bold  mt-3"> Description :</strong><p class="card-subtitle text-m"> {{item.descrip}}</p>
+          <div class="row m-4">
+             <strong class="card-text font-weight-bold col-2  mt-3"> Categorie :</strong>  <strong class="col-2 mt-3"> {{item.categrie?.libelle}}</strong>
+
+          </div>
+          <p class="card-text row  mt-3">
+            <span class="col-md-3 font-weight-bold">Date d'ouverture :</span> <u class="text-success col-md-3">{{item.dateOuverture | date}}</u>
+            <span class="col-md-3 font-weight-bold">Date de clôture :</span><u class="text-danger col-md-3">{{item.dateCloture | date}}</u>
         </p>
-          <button type="button"  class="btn btn-success" [routerLink]="[item.id,'postulez']">Depôsez</button>
+          <div class="text-center">
+            <button type="button"  class="btn btn-success" [routerLink]="[item.id,'postulez']">Depôsez</button>
           <button type="button"  class="btn btn-secondary" [routerLink]="[ item.id, 'detail']">Detail</button>
+          </div>
         </div>
       </div>
     </div>

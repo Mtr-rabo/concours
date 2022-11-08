@@ -11,13 +11,13 @@
                 <dt><span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.offre">Offre</span></dt>
                 <dd>
                     <div *ngIf="offreDocument.offre">
-                        <a [routerLink]="['/offre', offreDocument.offre?.id, 'view']">{{ offreDocument.offre?.id }}</a>
+                        <a [routerLink]="['/offre', offreDocument.offre?.id, 'view']">{{ offreDocument.offre?.nomPoste }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="concoursFonctionPubliqueApp.offreDocument.documentAFournir">Document A Fournir</span></dt>
                 <dd>
                     <div *ngIf="offreDocument.documentAFournir">
-                        <a [routerLink]="['/document-a-fournir', offreDocument.documentAFournir?.id, 'view']">{{ offreDocument.documentAFournir?.id }}</a>
+                        <a [routerLink]="['/document-a-fournir', offreDocument.documentAFournir?.id, 'view']">{{ offreDocument.documentAFournir?.libelle }}</a>
                     </div>
                 </dd>
             </dl>

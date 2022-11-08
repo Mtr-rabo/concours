@@ -1,48 +1,193 @@
-<div class="container">
-
-    <div id="stepper1" class="bs-stepper">
-      <div class="bs-stepper-header">
-        <div class="step" data-target="#test-l-1">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">1</span>
-            <span class="bs-stepper-label">Email</span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-2">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">2</span>
-            <span class="bs-stepper-label">Password</span>
-          </button>
-        </div>
-        <div class="line"></div>
-        <div class="step" data-target="#test-l-3">
-          <button class="step-trigger">
-            <span class="bs-stepper-circle">3</span>
-            <span class="bs-stepper-label">Validate</span>
-          </button>
-        </div>
+<div class="row font-italic">
+  <div class="col-sm-4 mt-0">
+    <div class="card mt-0 " >
+      <div class="card-header">
+        <h6 class="font-weight-bold row mt-3">
+          <span class="col-md-6 font-weight-bold ml-0"><span> Nom de fonction : </span> <span > <u>{{offre.nomPoste}}</u> </span></span>
+          <span class="col-md-6 font-weight-bold ml-0">Ministère : <u>{{ offre.ministerConcerner?.nom }}</u></span>
+        </h6>
       </div>
-      <div class="bs-stepper-content">
-        <form (ngSubmit)="onSubmit()">
-          <div id="test-l-1" class="content">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">Next</button>
-          </div>
-          <div id="test-l-2" class="content">
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <button (click)="next()" class="btn btn-primary">Next</button>
-          </div>
-          <div id="test-l-3" class="content text-center">
-            <button type="submit" class="btn btn-primary mt-5">Submit</button>
-          </div>
-        </form>
+      <div class="card-body">
+        <h5 class="font-weight-bold mt-3">Code de fonction :<span> {{ offre.code }}</span></h5>
+
+        <h5 class="card-title mt-3 ">Description</h5>
+        <p class="card-text mt-3 overflow-auto" style="max-height: 320px;">{{ offre.descrip }}</p>
+        <h4 class="font-weight-bold text-danger mt-3">
+          Age Limite : <span> {{ offre.ageLimite }} </span>
+        </h4>
+        <p class="row mt-3">
+          <span class="col-md-6 font-weight-bold">Option : {{ offre.option?.libelle }}</span>
+          <span class="col-md-6 font-weight-bold">Categorie : {{ offre.categrie?.libelle }}</span>
+        </p>
+        <p class="card-text row mt-3">
+          <span class="col-md-6 font-weight-bold text-center"
+            >Date d'ouverture : <u class="text-success">{{ offre.dateOuverture | date }}</u>
+          </span>
+          <span class="col-md-6 font-weight-bold text-center"
+            >Date de clôture :<u class="text-danger">{{ offre.dateCloture | date }}</u>
+          </span>
+        </p>
       </div>
     </div>
   </div>
+  <div class="col-sm-8 border border-2 bg-color-card">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-md-offset-3">
+          <form [formGroup]="editForm" id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+              <li [ngClass]="step >= 1 ? 'active ' : 'inactive'">Saisie infos du candidat</li>
+              <li [ngClass]="step >= 2 ? 'active' : 'inactive'">Ajoute pièces</li>
+              <li [ngClass]="step == 3 ? 'active' : 'inactive'">Recapitulatif</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset *ngIf="step == 1">
+              <h2 class="fs-title">Saisie infos du candidat</h2>
+
+              <div class="form-group row">
+                <label
+                  class="form-control-label text-dark font-weight-bold text-left col-sm-4"
+                  jhiTranslate="concoursFonctionPubliqueApp.candidat.nom"
+                  for="field_nom"
+                  >Nom</label
+                >
+                <input type="text" class="form-control col-sm-8" name="nom" id="field_nom" formControlName="nom" />
+              </div>
+
+              <div class="form-group row">
+                <label
+                  class="form-control-label text-dark font-weight-bold text-left col-sm-4"
+                  jhiTranslate="concoursFonctionPubliqueApp.candidat.prenom"
+                  for="field_prenom"
+                  >Prenom</label
+                >
+                <input type="text" required class="form-control col-sm-8" name="prenom" id="field_prenom" formControlName="prenom" />
+              </div>
+
+              <div class="form-group row">
+                <label
+                  class="form-control-label text-dark font-weight-bold text-left col-sm-4"
+                  jhiTranslate="concoursFonctionPubliqueApp.candidat.telephone"
+                  for="field_telephone"
+                  >Telephone</label
+                >
+                <input type="text" class="form-control col-sm-8" name="telephone" id="field_telephone" formControlName="telephone" />
+              </div>
+
+              <div class="form-group row">
+                <label
+                  class="form-control-label font-weight-bold text-dark text-left col-sm-4"
+                  jhiTranslate="concoursFonctionPubliqueApp.candidat.dateNaissance"
+                  for="field_dateNaissance"
+                  >Date Naissance</label
+                >
+                <div class="d-flex col-sm-8">
+                  <input
+                    id="field_dateNaissance"
+                    type="datetime-local"
+                    class="form-control"
+
+                    name="dateNaissance"
+                    formControlName="dateNaissance"
+                    placeholder="YYYY-MM-DD HH:mm"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label
+                  class="form-control-label font-weight-bold text-dark text-left col-sm-4"
+                  jhiTranslate="concoursFonctionPubliqueApp.candidat.lieuNaissance"
+                  for="field_lieuNaissance"
+                  >Lieu Naissance</label
+                >
+                <input
+                  type="text"
+                  class="form-control col-sm-8"
+                  name="lieuNaissance"
+                  id="field_lieuNaissance"
+                  formControlName="lieuNaissance"
+                />
+              </div>
+
+              <div class="form-group row">
+                <label
+                  class="form-control-label text-dark text-left font-weight-bold col-sm-4"
+                  jhiTranslate="concoursFonctionPubliqueApp.candidat.adresse"
+                  for="field_adresse"
+                  >Adresse</label
+                >
+                <input type="text" class="form-control col-sm-8" name="adresse" id="field_adresse" formControlName="adresse" />
+              </div>
+              <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous" />
+              <input (click)="next()" type="button" name="next" class="next action-button" value="Suivant" />
+            </fieldset>
+          </form>
+          <form [formGroup]="piecesForm" id="msform">
+            <fieldset *ngIf="step == 2">
+              <h2 class="fs-title">Pièces</h2>
+              <div class="row" *ngFor="let item of listOffreDocuments">
+                <label for="formFileDisabled" class="text-dark form-control text-left col-sm-6 mt-2">
+                  {{ item.documentAFournir?.libelle }}</label
+                >
+                <label class="badge badge-danger col-sm-2 mt-2">Obligatoire</label>
+                <input
+                  class="form-control col-sm-4 mt-2"
+                  name="file" accept="application/pdf"
+                  (change)="setFileData(item.documentAFournir?.libelle, $event, 'fich', false)"
+                  type="file"
+                  id="formFileDisabled"
+                />
+              </div>
+
+              <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous" />
+              <input (click)="next()" type="button" name="next" class="next action-button" value="Recapitulatif" />
+            </fieldset>
+          </form>
+          <form [formGroup]="educationalDetails" id="msform">
+            <fieldset *ngIf="step == 3">
+              <h2 class="fs-title">Recapitulatif</h2>
+              <div class="row">
+                <div class="card col-md-6" style="width: 18rem;">
+                  <div class="card-header font-weight-bold">
+                    Infos du candidant au concours
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-left"><span class="font-weight-bold">Nom :</span>{{ candidat!.nom }}</li>
+                    <li class="list-group-item text-left"><span class="font-weight-bold">Prénom :</span>{{ candidat!.prenom }}</li>
+                    <li class="list-group-item text-left"><span class="font-weight-bold">Téléphone :</span>{{ candidat!.telephone }}</li>
+                    <li class="list-group-item text-left"><span class="font-weight-bold">Date de naissance :</span>{{ candidat!.dateNaissance | date }}</li>
+                    <li class="list-group-item text-left"><span class="font-weight-bold">Lieu de naissance :</span>{{ candidat!.lieuNaissance }}</li>
+                  </ul>
+                </div>
+                <div class="card col-md-6" style="width: 18rem;">
+                  <div class="card-header font-weight-bold">
+                    Pieces
+                  </div>
+                  <div class=" row"*ngFor="let item of listOffreDocuments">
+
+                      <label for="formFileDisabled" class="text-dark col-8 mt-2 font-weight-bold text-left"> {{ item.documentAFournir?.libelle }}</label>
+                      <span class="badge badge-danger text-left col-2 mt-2">Obligatoire</span>
+                      <span class="text-success col-2 text-left mt-2">ok</span>
+
+                </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 text-center mt-4" >
+    <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span >Retour</span>
+    </button>
+
+    <button type="button" (click)="save()" id="save-entity" [disabled]="listDocuments.length !== listOffreDocuments.length" class="btn btn-primary">
+        <fa-icon icon="save"></fa-icon>&nbsp;<span >Envoyer le dossier</span>
+    </button>
+
+  </div>
+</div>

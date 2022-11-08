@@ -4,6 +4,7 @@ import org.ne.concours.domain.OffreDocument;
 import org.ne.concours.service.OffreDocumentService;
 import org.ne.concours.web.rest.errors.BadRequestAlertException;
 import org.ne.concours.service.dto.OffreDocumentCriteria;
+import org.ne.concours.service.impl.OffreDocumentServiceImpl;
 import org.ne.concours.service.OffreDocumentQueryService;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -92,6 +93,12 @@ public class OffreDocumentResource {
     public ResponseEntity<List<OffreDocument>> getAllOffreDocuments(OffreDocumentCriteria criteria) {
         log.debug("REST request to get OffreDocuments by criteria: {}", criteria);
         List<OffreDocument> entityList = offreDocumentQueryService.findByCriteria(criteria);
+        return ResponseEntity.ok().body(entityList);
+    }
+    @GetMapping("/offre-documents/offre/{id}")
+    public ResponseEntity<List<OffreDocument>> getAllOffreDocumentsByOffre(@PathVariable Long id) {
+        log.debug("REST offre id {}", id);
+        List<OffreDocument> entityList = offreDocumentService.findByOffre(id);
         return ResponseEntity.ok().body(entityList);
     }
 

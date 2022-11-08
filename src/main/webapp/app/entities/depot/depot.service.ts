@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IDepot } from 'app/shared/model/depot.model';
+import { IDepotWithCandidat } from 'app/shared/model/depot-with-candidat.model';
 
 type EntityResponseType = HttpResponse<IDepot>;
 type EntityArrayResponseType = HttpResponse<IDepot[]>;
@@ -21,6 +22,12 @@ export class DepotService {
     const copy = this.convertDateFromClient(depot);
     return this.http
       .post<IDepot>(this.resourceUrl, copy, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+  createWithCandidat(depot: IDepotWithCandidat): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClientWithCandidat(depot);
+    return this.http
+      .post<IDepot>(this.resourceUrl.concat('/candidat'), copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
@@ -51,6 +58,12 @@ export class DepotService {
   protected convertDateFromClient(depot: IDepot): IDepot {
     const copy: IDepot = Object.assign({}, depot, {
       dateDepot: depot.dateDepot && depot.dateDepot.isValid() ? depot.dateDepot.toJSON() : undefined,
+    });
+    return copy;
+  }
+  protected convertDateFromClientWithCandidat(depotWithCandidat: IDepotWithCandidat): IDepot {
+    const copy: IDepot = Object.assign({}, depotWithCandidat.depot, {
+      dateDepot: depotWithCandidat.depot?.dateDepot && depotWithCandidat.depot?.dateDepot.isValid() ? depotWithCandidat.depot?.dateDepot.toJSON() : undefined,
     });
     return copy;
   }
