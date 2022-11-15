@@ -19,7 +19,7 @@
         <span class="col-md-6 font-weight-bold text-center">Date de clôture :<u class="text-danger">{{offre.dateCloture | date}}</u> </span>
     </p>
     <div class="text-center">
-        <button type="button"  class="btn btn-success" [routerLink]="[offre.id,'postulez']">Depôsez</button>
+        <button type="button"  class="btn btn-success" [routerLink]="['/',offre.id,'postulez']">Depôsez</button>
       <button type="button"  class="btn btn-warning" (click)="previousState()" >retour</button>
       </div>
     </div>

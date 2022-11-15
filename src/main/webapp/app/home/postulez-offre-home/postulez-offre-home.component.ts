@@ -118,12 +118,11 @@ export class PostulezOffreHomeComponent implements OnInit {
   }
   next():any{
     this.candidat = this.createFromForm();
-    console.error(this.candidat);
-    if(this.step===1){
+       if(this.step===1){
          // this.personal_step = true;
          this.personalStep = true
           if (this.editForm.invalid) {
-
+            Swal.fire('Veuillez saisir vos informations ! ');
              return
             }
           this.step++
@@ -134,7 +133,9 @@ export class PostulezOffreHomeComponent implements OnInit {
       this.candidat = this.createFromForm();
       console.error(this.candidat);
         this.addresSstep = true;
-        if (this.piecesForm.invalid) { return }
+        if (this.listOffreDocuments.length !== this.listDocuments.length) {
+          Swal.fire('Veuillez joindre vos documents ! ');
+          return }
             this.step++;
     }
     else if(this.step===3){
